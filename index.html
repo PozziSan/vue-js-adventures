@@ -10,9 +10,18 @@
 </head>
 
 <body>
-    <p>Hello World! I'm Vue!</p>
     <div id="app">
-        {{speak}} - {{name}}
+        {{ speak }} - {{ name }}
+
+        <div v-if="isPissedOut">
+            <h1>YAAAAAAROOOOOOOOO!!! - {{ name }}</h1>
+            <h2>{{ stand.name }}!</h2>
+            <h2>{{ stand.attack }}</h2>
+        </div>
+
+        <button
+            v-on:click="isPissedOut = !isPissedOut">{{ !isPissedOut ? "Kill Joseph Joestar" : "Just Kidding" }}</button>
+
     </div>
 
 
@@ -21,7 +30,12 @@
             el: '#app',
             data: {
                 name: "Jotaro Kujo",
-                speak: "Yare Yare Daze"
+                speak: "Yare Yare Daze",
+                isPissedOut: false,
+                stand: {
+                    name: "Star Platinum",
+                    attack: "ORA ORA ORA",
+                }
             }
         });
     </script>
