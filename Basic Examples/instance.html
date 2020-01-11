@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../vue.js"></script>
+    <title>Instance Stand</title>
+</head>
+
+<body>
+
+    <div id="app">
+        <p>{{ name }}</p>
+        <p>{{ $data.$secret_power }}</p>
+        <p>What a mistery: {{ $data._mistery }}</p>
+        <p>{{ standUser }}</p>
+
+    </div>
+
+    <script>
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                name: 'Star Platinum', //This is displayed on vue element root.
+                $secret_power: "ZA WARUUUUDO", //Variables started with $ are displayed insite "$data" object on vue element
+                _mistery: 'Somehow I can Fly', //Variables started with _ are also displayed inside "$data"
+                _standUserName: "Jotaro",
+                _standUserLastName: "Kujo"
+            },
+            computed: {
+                standUser() {
+                    console.log(this); //this is this context is the Vue element itself (wow such obvious much deduction such eloquent)
+                    console.log(this.$data._mistery);
+
+                    setTimeout(() => {
+                        console.log('This do timeout: ' + this.name); //this inside the arrow function is also this of the parent element, the Vue object
+                    }, 1000);
+
+
+                    return this.$data._standUserLastName + ' ' + this.$data._standUserName;
+                }
+
+            }
+        });
+    </script>
+</body>
+
+</html>
