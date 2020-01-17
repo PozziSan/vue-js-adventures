@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../vue.js"></script>
+    <title>Stand Methods</title>
+</head>
+
+<body>
+    <div id="app">
+        <p>{{ punchEnemyStand }}!!!!</p>
+        <button @click="punchMore()">ORA!</button>
+    </div>
+
+    <script>
+        const vm = new Vue({
+            el: "#app",
+            data: {
+                punch: [],
+                standUserView: ''
+            },
+            methods: {
+                punchMore() {
+                    this.punch.push('ORA ');
+                },
+                appendPunches() {
+                    this.punch.forEach(element => {
+                        this.standUserView += element;
+                    });
+                }
+            },
+            computed: {
+                punchEnemyStand() {
+                    this.appendPunches();
+
+                    return this.standUserView;
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
