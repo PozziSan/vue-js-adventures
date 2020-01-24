@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../vue.js"></script>
+    <title>V-Bind Example</title>
+</head>
+
+<body>
+    <div id="app">
+        <a :href="link"> Stando Link</a>
+        <!-- When you put : before the tag, or the v-bind:<tag>>, vue will search in data the value to overwrite-->
+        <p :class="standCalss" class="noStand"> Stand Class</p>
+        <!--The order matters!-->
+        <p :class="active ? starPlatinum : zaWarudo"> Stand</p>
+        <!-- You can use simple expressions too! -->
+    </div>
+
+    <script>
+        const vm = new Vue({
+            el: "#app",
+            data: {
+                link: 'https://www.google.com/search?client=firefox-b-d&q=star+platinum',
+                standCalss: "Fighter",
+                active: true,
+                starPlatinum: "ORA!",
+                zaWarudo: "MUDA!"
+            }
+        });
+    </script>
+</body>
+
+</html>
