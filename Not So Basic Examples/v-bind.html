@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../vue.js"></script>
+    <title>V-Bind not so Basic Example</title>
+</head>
+
+<body>
+    <style>
+        .green {
+            color: green
+        }
+
+        .red {
+            color: red;
+        }
+    </style>
+
+
+    <div id="app">
+        <div>
+            <p>Star Platinum Target: {{ starPlatinum.target }}</p>
+            <p :class="starPlatinum.punchQuantity > ZaWarudo.punchQuantity ? 'green' : 'red'">Star Platinum ORAs:
+                {{ starPlatinum.punchQuantity }}</p>
+        </div>
+
+        <div>
+            <p>Za Warudo Target: {{ ZaWarudo.target }}</p>
+            <p :class="ZaWarudo.punchQuantity > starPlatinum.punchQuantity ? 'green' : 'red'">Za Warudo MUDAs:
+                {{ ZaWarudo.punchQuantity }}</p>
+        </div>
+
+        <button @click="pullData">Pull Data</button>
+    </div>
+
+
+    <script>
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                starPlatinum: {},
+                ZaWarudo: {}
+            },
+            methods: {
+                //For This Example I Have used manotes-api to fake some endpoints. Please check on: https//github.com/PozziSan/manotes-api
+
+                fetchStarPlatinum() {
+                    fetch('http://localhost:5324/api/star_platinum')
+                        .then(response => response.json())
+                        .then(starPlatinum => {
+                            this.starPlatinum = starPlatinum;
+                        });
+                },
+                fetchZaWarudo() {
+                    fetch('http://localhost:5324/api/za_warudo')
+                        .then(response => response.json())
+                        .then(ZaWarudo => {
+                            this.ZaWarudo = ZaWarudo;
+                        })
+                },
+                pullData() {
+                    this.fetchZaWarudo();
+                    this.fetchStarPlatinum();
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
