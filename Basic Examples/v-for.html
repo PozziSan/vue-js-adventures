@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../vue.js"></script>
+    <title>v-for Basic Example</title>
+</head>
+
+<body>
+
+    <div id="app">
+        <h2>STARDUST CRUZADERS</h2>
+        <p><b>Stand User - Stand Name</b></p>
+        <li v-for="(value, key) in cruzaders" :key="value.standName">
+            <!--Key will set an Unique Key to each element on list. this is VERY important on complex uses. A FOR WITHOUT :KEY WILL NOT BE REACTIVE-->
+            <p>{{ value.standUser }} - {{ value.standName }}</p>
+        </li>
+    </div>
+
+    <script>
+        const vm = new Vue({
+            el: "#app",
+            data: {
+                cruzaders: [
+                    {
+                        standUser: 'Kujo Jotaro',
+                        standName: 'Star Platinum'
+                    },
+                    {
+                        standUser: 'Joseph Joestar',
+                        standName: 'Hermit Purple'
+                    },
+                    {
+                        standUser: 'Noriaki Kakyoin',
+                        standName: 'Hierophant Green'
+                    },
+                    {
+                        standUser: 'Mohammed Avdol',
+                        standName: "Magician's Red"
+                    },
+                    {
+                        standUser: 'Jean Pierre Polnareff',
+                        standName: 'Silver Chariot'
+                    },
+                    {
+                        standUser: 'Iggy',
+                        standName: 'The Fool'
+                    }
+                ]
+
+            }
+        });
+    </script>
+</body>
+
+</html>
