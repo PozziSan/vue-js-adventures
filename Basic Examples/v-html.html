@@ -12,14 +12,27 @@
 <body>
     <div id="app">
         <b>Why to Watch JoJo?</b>
-        <div v-html="answer"></div>
+        <p>v-html:</p>
+        <div v-html="answer"></div> <!-- v-html renders html as html (NANIIIIIII!????!??)-->
+
+        <p>v-text</p>
+        <div v-text="answer"></div> <!-- v-text renders everything as text-->
+
+
+        <button @click="jojoFagCounter++">JoJo is really the best anime ever!!</button>
+
+        <p>Reactive JoJo Fag Counter: {{ jojoFagCounter }}</p>
+        <p v-once> v-once JoJoFag Counter: {{ jojoFagCounter }} </p>
+        <!-- V Once turns the Elements Statics instead of reactive-->
+
     </div>
 
     <script>
         const vm = new Vue({
             el: "#app",
             data: {
-                answer: '<a href="https://lmgtfy.com/?q=why+jojo+is+the+best+anime"> Jojo Is The Best Anime! </a>'
+                answer: '<a href="https://lmgtfy.com/?q=why+jojo+is+the+best+anime"> Jojo Is The Best Anime! </a>',
+                jojoFagCounter: 0
             }
         });
     </script>
