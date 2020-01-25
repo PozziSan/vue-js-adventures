@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../vue.js"></script>
+    <title>V-if Basic Example</title>
+</head>
+
+<body>
+    <div id="app">
+        <div v-if="! requiem">
+            <!-- v-if changes the element for a comment when the statement is false. It's like it never even existed on DOM. Just like any other reality rather than Requiem Reality-->
+            <h4>I will kill Giorno Giovanna!</h4>
+            <button @click="killGiornoGiovvana">Kill Giorno Giovvana!</button>
+        </div>
+
+        <div v-show="requiem">
+            <!-- v-show only changes the display css statement. It was always there, just like requiem-->
+            <h2>Kore Wa Requiem.</h2>
+            <h5> >>>> Requiem Controls Reality</h5>
+            <h2>The reality you see will never happen, you will die endlessly</h2>
+        </div>
+    </div>
+
+
+    <script>
+        const vm = new Vue({
+            el: "#app",
+            data: {
+                requiem: false
+            },
+            methods: {
+                killGiornoGiovvana() {
+                    this.requiem = true;
+                }
+            }
+        });
+    </script>
+
+
+</body>
+
+</html>
