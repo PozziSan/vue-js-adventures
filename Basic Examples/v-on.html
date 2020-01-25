@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src='../vue.js'></script>
+    <title>V-on Basic Example</title>
+</head>
+
+<body>
+
+    <div id="app">
+        <button @click.event="stopTime">TOKI WO TOMARE!</button>
+        <h4>{{ timeStopped  ?  'DIO STOPPED TIME!' : ''}}</h4>
+
+        <button @click="ora">Give DIO somes ORA!</button>
+        <h4>{{ timeStopped ? jotaroIsStopped ? 'JOTARO CANNOT MOVES ON STOPPED TIME!': 'JOTARO IS SO STRONG THAT HE CAN MOVE ON STOPPED TIME!!!' : '' }}
+        </h4>
+        <h4>{{ !jotaroIsStopped ? oraQuantity > 0 ? 'Jotaro Hits DIO ' + oraQuantity + ' times!' : '' : '' }}</h4>
+
+        <a href="#giveUp" @click.prevent>Give Up!</a>
+
+    </div>
+
+
+    <script>
+        const vm = new Vue({
+            el: "#app",
+            data: {
+                timeStopped: false,
+                oraQuantity: 0,
+                jotaroIsStopped: false
+            },
+            methods: {
+                stopTime(event) {
+                    this.timeStopped = true;
+                    this.jotaroIsStopped = true;
+                    this.oraQuantity = 0;
+                },
+                ora() {
+                    this.oraQuantity++;
+
+                    if (this.oraQuantity > 10 && this.jotaroIsStopped) {
+                        this.jotaroIsStopped = false;
+                        this.oraQuantity = 0;
+                    }
+                }
+            }
+        });
+    </script>
+
+</body>
+
+</html>
