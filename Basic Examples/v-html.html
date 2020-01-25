@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../vue.js"></script>
+    <title>v-html Basic Example</title>
+</head>
+
+<body>
+    <div id="app">
+        <b>Why to Watch JoJo?</b>
+        <div v-html="answer"></div>
+    </div>
+
+    <script>
+        const vm = new Vue({
+            el: "#app",
+            data: {
+                answer: '<a href="https://lmgtfy.com/?q=why+jojo+is+the+best+anime"> Jojo Is The Best Anime! </a>'
+            }
+        });
+    </script>
+</body>
+
+</html>
