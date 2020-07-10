@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+</head>
+
+<body>
+    <div>
+        <p>Shirts - R$ <span class="price"></span></p>
+        <button class="add">Add</button>
+        <button class="remove">Remove</button>
+        <span class="total"></span>
+        <p>Total: <span class="totalPrice"></span></p>
+    </div>
+
+    <script>
+        const data = {
+                price: 49,
+                total: 0
+            }
+
+        const price = document.querySelector(".price");
+        const total = document.querySelector(".total");
+        const totalPrice = document.querySelector(".totalPrice");
+        const add = document.querySelector(".add");
+        const remove = document.querySelector(".remove");
+
+        price.innerText = data.price;
+        total.innerText = data.total;
+        totalPrice.innerText = data.price * data.total;
+
+        function increment() {
+            data.total++;
+            updateUI();
+        }
+
+        function decrement() {
+            data.total--;
+            updateUI();
+        }
+
+        function updateUI() {
+            total.innerText = data.total;
+            totalPrice.innerText = data.total * data.price;
+        }
+
+        add.addEventListener("click", increment);
+        remove.addEventListener("click", decrement);
+    </script>
+</body>
+
+</html>
